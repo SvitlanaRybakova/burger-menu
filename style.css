@@ -1,0 +1,131 @@
+*{
+    margin: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+/* transition должен совпадать с transition из #menu  */
+.wrapper{
+    transition:all ease 1s;
+}
+
+/* оформление кнопки */
+.hamburger-menu {
+  
+    display:block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    width: 96px;
+    height: 96px;
+    font-size: 0;
+    border:none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.hamburger-menu:focus{
+    outline: none;
+}
+
+.hamburger-menu span{
+    display: block;
+    position: absolute;
+    top: 44px;
+    left: 18px;
+    right: 18px;
+    height: 8px;
+    background: white;
+    
+}
+
+.hamburger-menu span::before, .hamburger-menu span::after{
+    position: absolute;
+    display: block;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: white;
+    content: "";
+}
+
+.hamburger-menu span::before{
+    top: -20px;
+}
+
+.hamburger-menu span::after{
+    bottom: -20px;
+}
+
+/* анимирование кнопки использую другой класс hamburger-menu-line */
+.hamburger-menu-line{
+    background:#00aeef;
+}
+
+.hamburger-menu-line span{
+    transition: background 0s, 0.3s;
+}
+
+.hamburger-menu-line span::before, .hamburger-menu-line span::after {
+    transition-duration: 0.3s 0.5s;
+    transition-delay: 0.3s 0s;
+}
+.hamburger-menu-line span::before{
+    transition-property: top, transform;
+}
+.hamburger-menu-line span::after{
+    transition-property: bottom, transform;
+}
+.hamburger-menu-line.is-active{
+    background: #0066a1;
+}
+
+.hamburger-menu-line.is-active span{
+        background:none;
+    }
+
+.hamburger-menu-line.is-active span::before{
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+.hamburger-menu-line.is-active span::after{
+    bottom: 0;
+    transform: rotate(45deg);
+}
+
+.hamburger-menu-line.is-active::before, .hamburger-menu-line.is-active::after{
+    transition-delay: 0s, 0.3s;
+}
+
+/* стили для меню */
+#menu{
+    width: 300px;
+    /* 300px - 96px */
+    margin-left: -204px;
+    background: #b1d4e5;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transition:all ease 1s;
+    z-index: 9999;
+}
+.container{
+    width: 80%;
+    max-width: 1000px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+/* как будет изменяться меню при клике */
+/* смещает вправо */
+.body-active{
+    margin-left: 300px;
+}
+#menu.nav-active{
+    margin-left: 0;
+}
